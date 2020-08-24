@@ -1,0 +1,49 @@
+//to create the database
+CREATE DATABASE restful_db;
+
+//to use the Database
+USE restful_db;
+
+//To create the authors table
+CREATE TABLE AUTHORS( AUTH_ID INT PRIMARY KEY AUTO_INCREMENT ,AUTH_NAME VARCHAR(200))ENGINE=INNODB;
+
+//To add random values to the authors table
+INSERT INTO AUTHORS (AUTH_NAME,AUTH_ID) VALUES ('HARRY'),('RAVI'),('RAJ'),('ANITA GOEL'),('ARUTHUR HAILEY');
+
+// CURRENT STATUS OF AUTHORS table
++---------+----------------+
+| AUTH_ID | AUTH_NAME      |
++---------+----------------+
+|      21 | HARRY          |
+|      42 | RAJ            |
+|      43 | RAVI           |
+|      57 | ANITA GOEL     |
+|      60 | ARUTHUR HAILEY |
++---------+----------------+
+
+//to create books table 
+CREATE TABLE books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_name VARCHAR(200),
+    auth_id INT,
+    FOREIGN KEY (auth_id)
+    REFERENCES AUTHORS(AUTH_ID)
+    ON DELETE CASCADE
+) ENGINE=INNODB;
+
+//To add random values to the books table
+INSERT INTO AUTHORS (book_name,auth_id) VALUES ('book one',1),('book two',2),('book 3 ',3),('book 4',4),('book 5',5),('book 6',2),('book 7',4);
+
+//to create reviews table
+CREATE TABLE reviews (
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
+    reviewer_name VARCHAR(200),
+    review VARCHAR(2000),
+    book_id INT,
+    FOREIGN KEY (book_id)
+    REFERENCES books(book_id)
+    ON DELETE CASCADE
+) ENGINE=INNODB;
+
+//To add random values to the reviews table
+INSERT INTO AUTHORS (reviewer_name,review,book_id) VALUES ('bob','good review',1),('hari','average review,1),('manoj','average review,'3),('shankar','bad review',4),('midun','good review',5),('nithin','average review',5);

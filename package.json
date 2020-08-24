@@ -1,0 +1,30 @@
+{
+  "name": "rest-api-karma",
+  "version": "1.0.0",
+  "description": "  REST API that contains Books, Authors and Reviews. <br /> Every Book has an Author. Authors can have many Books. Books can have many reviews. <br /> API is able to create, read, modify, and delete Books, Authors, and Reviews.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adwaith2000/Karma-Trials--Rest-API.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mysql",
+    "restapi"
+  ],
+  "author": "Adwaith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adwaith2000/Karma-Trials--Rest-API/issues"
+  },
+  "homepage": "https://github.com/adwaith2000/Karma-Trials--Rest-API#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
