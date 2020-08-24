@@ -6,9 +6,9 @@ API is able to create, read, modify, and delete Books, Authors, and Reviews. <br
 API Routes :  <br />
 GET /book - Get all Books <br />
 GET /book?authorID=x - Get All Books of authorID x<br />
-GET /book/:bookid - Get one Book<br />
+GET /book/:bookid - Get one Book <br />
 POST /book - Create Book<br />
-PUT /book/:bookid - Update Boo<br />k
+PUT /book/:bookid - Update Book<br />
 DELETE /book/:bookid - Delete Book<br />
 <br />
 GET /author - Get all Author<br />
