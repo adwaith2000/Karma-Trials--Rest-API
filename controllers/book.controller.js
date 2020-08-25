@@ -9,13 +9,13 @@ exports.create = (req, res) => {
       });
     }
   
-    // Create a Customer
+    // Create a book
     const book = new book({
       name: req.body.name,
       id:req.body.id
     });
   
-    // Save Customer in the database
+    // Save book in the database
     Book.create(book, (err, data) => {
       if (err)
         res.status(500).send({
