@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bookstore application." });
+  res.json({ message: "Welcome to book archive application." });
 });
 
 // set port, listen for requests

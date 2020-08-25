@@ -2,6 +2,12 @@
 REST API that contains Books, Authors and Reviews. <br />
 Every Book has an Author. Authors can have many Books. Books can have many reviews. <br />
 API is able to create, read, modify, and delete Books, Authors, and Reviews. <br />
+<br />
+<br />
+#To Run this :  <br />
+You must install node<br />
+After downloading and installing node, create the table as per the command in SQL COMMANDS.txt <br />
+Then go to project folder in terminal and type node server.js.
 
 API Routes :  <br />
 GET /book - Get all Books <br />

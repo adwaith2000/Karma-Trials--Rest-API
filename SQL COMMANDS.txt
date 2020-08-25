@@ -5,26 +5,15 @@ CREATE DATABASE restful_db;
 USE restful_db;
 
 //To create the authors table
-CREATE TABLE AUTHORS( AUTH_ID INT PRIMARY KEY AUTO_INCREMENT ,AUTH_NAME VARCHAR(200))ENGINE=INNODB;
+CREATE TABLE AUTHORS( AUTH_NAME VARCHAR(200),AUTH_ID INT PRIMARY KEY AUTO_INCREMENT)ENGINE=INNODB;
 
 //To add random values to the authors table
-INSERT INTO AUTHORS (AUTH_NAME,AUTH_ID) VALUES ('HARRY'),('RAVI'),('RAJ'),('ANITA GOEL'),('ARUTHUR HAILEY');
-
-// CURRENT STATUS OF AUTHORS table
-+---------+----------------+
-| AUTH_ID | AUTH_NAME      |
-+---------+----------------+
-|      21 | HARRY          |
-|      42 | RAJ            |
-|      43 | RAVI           |
-|      57 | ANITA GOEL     |
-|      60 | ARUTHUR HAILEY |
-+---------+----------------+
+INSERT INTO AUTHORS (AUTH_NAME) VALUES ('HARRY'),('RAVI'),('RAJ'),('ANITA GOEL'),('ARUTHUR HAILEY');
 
 //to create books table 
 CREATE TABLE books (
-    book_id INT PRIMARY KEY AUTO_INCREMENT,
     book_name VARCHAR(200),
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
     auth_id INT,
     FOREIGN KEY (auth_id)
     REFERENCES AUTHORS(AUTH_ID)
@@ -36,9 +25,9 @@ INSERT INTO AUTHORS (book_name,auth_id) VALUES ('book one',1),('book two',2),('b
 
 //to create reviews table
 CREATE TABLE reviews (
+    content VARCHAR(2000),
     review_id INT PRIMARY KEY AUTO_INCREMENT,
     reviewer_name VARCHAR(200),
-    review VARCHAR(2000),
     book_id INT,
     FOREIGN KEY (book_id)
     REFERENCES books(book_id)

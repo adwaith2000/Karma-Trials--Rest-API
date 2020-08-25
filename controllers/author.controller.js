@@ -1,5 +1,6 @@
 const Author = require("../models/Author.model.js");
 
+
 exports.create = (req, res) => {
     // Validate request
     if (!req.body) {
@@ -8,13 +9,13 @@ exports.create = (req, res) => {
       });
     }
   
-    // Create a Customer
+    // Create author
     const author = new author({
       name: req.body.name
     });
   
-    // Save Customer in the database
-    Customer.create(customer, (err, data) => {
+    // Save author in the database
+    Author.create(author, (err, data) => {
       if (err)
         res.status(500).send({
           message:

@@ -19,8 +19,8 @@ Book.create = (newBook, result) => {
   });
 };
 
-Author.findById = (authorId, result) => {
-  sql.query(`SELECT * FROM AUTHORS WHERE AUTH_ID = ${authorId}`, (err, res) => {
+Book.findById = (bookId, result) => {
+  sql.query(`SELECT * FROM books WHERE book_id = ${bookId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -28,33 +28,52 @@ Author.findById = (authorId, result) => {
     }
 
     if (res.length) {
-      console.log("found Author: ", res[0]);
+      console.log("found book: ", res[0]);
       result(null, res[0]);
       return;
     }
 
-    // not found Author with the id
+    // not found book with the id
     result({ kind: "not_found" }, null);
   });
 };
 
-Author.getAll = result => {
-  sql.query("SELECT * FROM AUTHORS", (err, res) => {
+
+Book.findByauth = (authId, result) => {
+  sql.query(`SELECT * FROM books WHERE auth_id = ${authId}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found book: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+
+    // not found book with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+
+Book.getAll = result => {
+  sql.query("SELECT * FROM books", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log("Authors: ", res);
+    console.log("books: ", res);
     result(null, res);
   });
 };
-
-Author.updateById = (id, author, result) => {
+Book.updateById = (id, book, result) => {
   sql.query(
-    "UPDATE AUTHORS SET  AUTH_NAME = ?,  WHERE AUTH_ID = ?",
-    [ author.name,id],
+    "UPDATE books SET  book_name = ?,  WHERE book_id = ?",
+    [ book.name,id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -63,19 +82,19 @@ Author.updateById = (id, author, result) => {
       }
 
       if (res.affectedRows == 0) {
-        // not found Author with the id
+        // not found book with the id
         result({ kind: "not_found" }, null);
         return;
       }
 
-      console.log("updated Author: ", { id: id, ...Author });
-      result(null, { id: id, ...Author });
+      console.log("updated book: ", { id: id, ...book });
+      result(null, { id: id, ...book });
     }
   );
 };
 
-Author.remove = (id, result) => {
-  sql.query("DELETE FROM AUTHORS WHERE AUTH_ID = ?", id, (err, res) => {
+Book.remove = (id, result) => {
+  sql.query("DELETE FROM books WHERE book_id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -83,14 +102,14 @@ Author.remove = (id, result) => {
     }
 
     if (res.affectedRows == 0) {
-      // not found Author with the id
+      // not found books with the id
       result({ kind: "not_found" }, null);
       return;
     }
 
-    console.log("deleted Author with id: ", id);
+    console.log("deleted books with id: ", id);
     result(null, res);
   });
 };
 
-module.exports = Author;
+module.exports = Book;
